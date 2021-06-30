@@ -1,0 +1,51 @@
+<div class="document-container">
+  <div class="row">
+    <div class="col-3">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active': activeLink=='All'}" href="javascript:void(0)" (click)="filterDataByCategory('All')">All</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active': activeLink=='Financial'}"  href="javascript:void(0)" (click)="filterDataByCategory('Financial')">Financial</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active': activeLink=='Technical'}"  href="javascript:void(0)" (click)="filterDataByCategory('Technical')">Technical</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active': activeLink=='Marketing'}"  href="javascript:void(0)"  (click)="filterDataByCategory('Marketing')">Marketing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active': activeLink=='Human Resources'}"  href="javascript:void(0)" (click)="filterDataByCategory('Human Resources')">Human Resources</a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="col-9">
+      <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <input type="email" class="form-control" id="search-category" [value]=""  placeholder="Search Typing document name.." (keyup)="filterDataByName($event)">
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 p-10" *ngFor="let item of filterdocumentList">
+          <div class="card document-card">
+            <div class="header">
+              <span class="badge category-badge color-1" 
+              [ngClass]="{'color-1': item.Category=='Technical','color-2': item.Category=='Human Resources','color-3': item.Category=='Financial','color-4': item.Category=='Marketing'}"
+              >{{item.Category}}</span>
+            </div>
+
+            <div class="card-content">
+              <label>{{item.Name}}</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
